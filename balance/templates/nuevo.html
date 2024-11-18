@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+<h1>Agregar movimiento</h1>
+{% endblock page_title %}
+
+{% block contenido %}
+
+<form action="/nuevo" method="post">
+    <!-- Fecha -->
+    <div class="campo-formulario">
+
+        <label for="fecha">Fecha</label>
+        <input type="date" name="fecha" id="fecha" required>
+    </div>
+
+    <!-- Concepto -->
+    <div class="campo-formulario">
+        <label for="concepto">Concepto</label>
+        <input type="text" name="concepto" id="concepto" required>
+    </div>
+
+    <!-- Tipo -->
+    <div class="campo-formulario">
+        <input type="radio" name="ingreso_gasto" id="ingreso" value="I">
+        <label for="ingreso">Ingreso</label>
+        <input type="radio" name="ingreso_gasto" id="gasto" value="G" checked>
+        <label for="gasto">Gasto</label>
+    </div>
+
+    <!-- Cantidad -->
+    <div class="campo-formulario">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" name="cantidad" id="cantidad" step=".01" min="0.01" required>
+    </div>
+
+    <!-- Bonton de enviar -->
+    <div class="campo-formulario">
+        <button type="submit">Enviar</button>
+    </div>
+</form>
+
+{% endblock contenido %}
