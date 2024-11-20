@@ -68,6 +68,14 @@ class Movimiento:
             self.fecha = None
             mensaje = f'La fecha {fecha} no es una fecha ISO 8601 válida'
             self.errores.append(mensaje)
+        except TypeError:
+            self.fecha = None
+            mensaje = f'La fecha {fecha} no es una cadena'
+            self.errores.append(mensaje)
+        except:
+            self.fecha = None
+            mensaje = f'Error desconocido con la fecha'
+            self.errores.append(mensaje)
 
         try:
             valor = float(cantidad)
