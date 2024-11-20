@@ -17,7 +17,6 @@ def home():
 @app.route('/eliminar/<int:id>')
 def delete(id):
     lista = ListaMovimientosDB()
-
     template = 'borrado.html'
     try:
         result = lista.eliminar(id)
