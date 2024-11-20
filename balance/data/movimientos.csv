@@ -1,4 +1,4 @@
-fecha,concepto,ingreso_gasto,cantidad
+fecha,concepto,tipo,cantidad
 2024-11-10,compra libro,G,29.65
 2024-11-11,compra libro matematicas,G,30.65
 2024-11-12,bote de propinas,I,44.50

@@ -59,7 +59,7 @@ class Movimiento:
         self.errores = []
         fecha = dict_mov.get('fecha', '')
         concepto = dict_mov.get('concepto', 'Gastos varios')
-        tipo = dict_mov.get('ingreso_gasto', 'G')
+        tipo = dict_mov.get('tipo', 'G')
         cantidad = dict_mov.get('cantidad', 0)
 
         try:
@@ -91,14 +91,14 @@ class Movimiento:
             self.errores.append(mensaje)
 
         self.concepto = concepto
-        self.ingreso_gasto = tipo
+        self.tipo = tipo
 
     @property
     def has_errors(self):
         return len(self.errores) > 0
 
     def __str__(self):
-        return f'{self.fecha} | {self.concepto} | {self.ingreso_gasto} | {self.cantidad}'
+        return f'{self.fecha} | {self.concepto} | {self.tipo} | {self.cantidad}'
 
     def __repr__(self):
         return self.__str__()
