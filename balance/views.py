@@ -1,3 +1,4 @@
+from datetime import date
 from flask import render_template, request
 
 from balance.models import ListaMovimientosCsv, ListaMovimientosDB
@@ -32,6 +33,8 @@ def delete(id):
 @app.route('/editar/<int:id>')
 def actualizar(id):
     if request.method == 'GET':
-        formulario = Movimientoform()
+        lista = ListaMovimientosDB()
+        movimiento = lista.buscarMovimiento(id)
+        formulario = Movimientoform(data=movimiento)
         return render_template('form_movimiento.html', form=formulario)
     return f'TODO: tratar el metodo POST para actualizar el movimiento {id}'
