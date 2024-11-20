@@ -15,6 +15,7 @@
         <th class="cabecera">Concepto</th>
         <th class="cabecera">Tipo</th>
         <th class="cabecera">Cantidad</th>
+        <th class="cabecera acciones">Acciones</th>
     </tr>
     {% if movs %}
     {% for m in movs %}
@@ -35,6 +36,9 @@
             {% endif %}
         </td>
         <td class="dato numero">{{ m.cantidad }}</td>
+        <td class="acciones">
+            <a href="/eliminar/{{ m.id }}" class="mini-boton">&times;</a>
+        </td>
     </tr>
     {% if m.has_errors %}
     <tr>
