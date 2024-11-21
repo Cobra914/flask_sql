@@ -37,6 +37,9 @@
         </td>
         <td class="dato numero">{{ m.cantidad }}</td>
         <td class="acciones">
+            <a href="/editar/{{ m.id }}" class="mini-boton">
+                <img src="/static/icons/editar.png" alt="Editar">
+            </a>
             <a href="/eliminar/{{ m.id }}" class="mini-boton">&times;</a>
         </td>
     </tr>
