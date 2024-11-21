@@ -42,25 +42,30 @@ def actualizar(id):
         lista = ListaMovimientosDB()
         formulario = Movimientoform(data=request.form)
 
-        fechaDate = formulario.fecha.data
-        mov_dict = {
-            'fecha': fechaDate.isoformat(),
-            'concepto': formulario.concepto.data,
-            'tipo': formulario.tipo.data,
-            'cantidad': formulario.cantidad.data,
-            'id': formulario.id.data
-        }
+        if formulario.validate():
+            fechaDate = formulario.fecha.data
+            mov_dict = {
+                'fecha': fechaDate.isoformat(),
+                'concepto': formulario.concepto.data,
+                'tipo': formulario.tipo.data,
+                'cantidad': formulario.cantidad.data,
+                'id': formulario.id.data
+            }
 
-        movimiento = Movimiento(mov_dict)
+            movimiento = Movimiento(mov_dict)
 
-        resultado = lista.editarMovimiento(movimiento)
+            resultado = lista.editarMovimiento(movimiento)
 
-        resultado = lista.editarMovimiento(movimiento)
-        if resultado == 1:
-            template = 'guardado_ok.html'
-        elif resultado == -1:
-            template = 'error_edit.html'
+            resultado = lista.editarMovimiento(movimiento)
+            if resultado == 1:
+                template = 'guardado_ok.html'
+            elif resultado == -1:
+                template = 'error_edit.html'
+            else:
+                template = 'error_inesperado.html'
+
         else:
-            template = 'error_inesperado.html'
+            print(formulario.errors)
+            return render_template('form_movimiento.html', form=formulario, id=formulario.id.data)
 
     return render_template(template)
