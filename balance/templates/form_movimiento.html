@@ -12,10 +12,12 @@
         El formulario tiene errores. Puedes corregirlos?
     </p>
     <ul>
-        {{ form.errors }}
-        <!--{% for error in form.errors%}
-        <li>{{ error[1] }}</li>
-        {% endfor %}-->
+        <!--{{ form.errors }}-->
+        {% for error in form.errors %}
+        <li>
+            {{ form.errors.get(error) }}
+        </li>
+        {% endfor %}
     </ul>
 </div>
 {% endif %}
