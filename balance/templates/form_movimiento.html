@@ -15,10 +15,12 @@
         <!--{{ form.errors }}-->
         {% for errors in form.errors.items() %}
         <li>
-            {{ errors[0] }}:
-            {% for msj in errors[1] %}
-            {{ msj }}
-            {% endfor %}
+            {{ errors[0] }} tiene errores:
+            <ul>
+                {% for msj in errors[1] %}
+                <li>{{ msj }}</li>
+                {% endfor %}
+            </ul>
         </li>
         {% endfor %}
     </ul>
