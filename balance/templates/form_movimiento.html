@@ -13,9 +13,12 @@
     </p>
     <ul>
         <!--{{ form.errors }}-->
-        {% for error in form.errors %}
+        {% for errors in form.errors.items() %}
         <li>
-            {{ form.errors.get(error) }}
+            {{ errors[0] }}:
+            {% for msj in errors[1] %}
+            {{ msj }}
+            {% endfor %}
         </li>
         {% endfor %}
     </ul>
