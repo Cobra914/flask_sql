@@ -6,13 +6,12 @@
 
 {% block contenido %}
 
-{% if form.errors %}
+<!--{% if form.errors %}
 <div class="errores">
     <p>
         El formulario tiene errores. Puedes corregirlos?
     </p>
     <ul>
-        <!--{{ form.errors }}-->
         {% for errors in form.errors.items() %}
         <li>
             {{ errors[0] }} tiene errores:
@@ -25,7 +24,7 @@
         {% endfor %}
     </ul>
 </div>
-{% endif %}
+{% endif %}-->
 
 <form action="/editar/{{ id }}" method="post" novalidate>
     {{ form.csrf_token }}
@@ -36,12 +35,22 @@
     <div class="campo-formulario">
         {{ form.fecha.label }}
         {{ form.fecha }}
+        {% if form.fecha.errors %}
+        {% for error in form.fecha.errors %}
+        {{ error }}
+        {% endfor %}
+        {% endif %}
     </div>
 
     <!-- Concepto -->
     <div class="campo-formulario">
         {{ form.concepto.label }}
         {{ form.concepto }}
+        {% if form.concepto.errors %}
+        {% for error in form.concepto.errors %}
+        {{ error }}
+        {% endfor %}
+        {% endif %}
     </div>
 
     <!-- Tipo -->
@@ -56,7 +65,11 @@
     <div class="campo-formulario">
         {{ form.cantidad.label }}
         {{ form.cantidad }}
-
+        {% if form.cantidad.errors %}
+        {% for error in form.cantidad.errors %}
+        {{ error }}
+        {% endfor %}
+        {% endif %}
     </div>
 
     <!-- Bonton de enviar -->
