@@ -6,6 +6,7 @@ from wtforms import (
     RadioField,
     StringField,
     SubmitField,
+    ValidationError,
 )
 from wtforms.validators import data_required, number_range
 
@@ -15,9 +16,7 @@ class Movimientoform(FlaskForm):
     fecha = DateField('Fecha', validators=[
         data_required('Debes indicar la fecha del movimiento.')
     ])
-    concepto = StringField('Concepto', validators=[
-        data_required('No has especificado un concepto para este movimiento.')
-    ])
+    concepto = StringField('Concepto')
     tipo = RadioField(choices=[('I', 'Ingreso'), ('G', 'Gasto')], validators=[
         data_required('Necesito saber si es un gasto o un ingreso.')
     ])
@@ -29,3 +28,18 @@ class Movimientoform(FlaskForm):
     ])
 
     submit = SubmitField('Guardar')
+
+    def validate_concepto(form, field):
+        result = False
+
+        if field.data == "" or field.data.strip() == "":
+            raise ValidationError(
+                'No has especificado un concepto para este movimiento.')
+
+        try:
+            valor = float(field.data)
+        except ValueError:
+            result = True
+            return result
+        else:
+            raise ValidationError('El campo debe ser una cadena de texto.')
