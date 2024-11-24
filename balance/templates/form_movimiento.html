@@ -35,22 +35,26 @@
     <div class="campo-formulario">
         {{ form.fecha.label }}
         {{ form.fecha }}
-        {% if form.fecha.errors %}
-        {% for error in form.fecha.errors %}
-        {{ error }}
-        {% endfor %}
-        {% endif %}
+        <p class="error">
+            {% if form.fecha.errors %}
+            {% for error in form.fecha.errors %}
+            {{ error }}
+            {% endfor %}
+            {% endif %}
+        </p>
     </div>
 
     <!-- Concepto -->
     <div class="campo-formulario">
         {{ form.concepto.label }}
         {{ form.concepto }}
-        {% if form.concepto.errors %}
-        {% for error in form.concepto.errors %}
-        {{ error }}
-        {% endfor %}
-        {% endif %}
+        <p class="error">
+            {% if form.concepto.errors %}
+            {% for error in form.concepto.errors %}
+            {{ error }}
+            {% endfor %}
+            {% endif %}
+        </p>
     </div>
 
     <!-- Tipo -->
@@ -65,11 +69,13 @@
     <div class="campo-formulario">
         {{ form.cantidad.label }}
         {{ form.cantidad }}
-        {% if form.cantidad.errors %}
-        {% for error in form.cantidad.errors %}
-        {{ error }}
-        {% endfor %}
-        {% endif %}
+        <p class="error">
+            {% if form.cantidad.errors %}
+            {% for error in form.cantidad.errors %}
+            {{ error }}
+            {% endfor %}
+            {% endif %}
+        </p>
     </div>
 
     <!-- Bonton de enviar -->

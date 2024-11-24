@@ -86,3 +86,11 @@ header {
     color: white;
     background-color: var(--primary-color);
 }
+
+.campo-formulario .error {
+    color: var(--error-color);
+    margin: 0 0 10px 0;
+    line-height: 1rem;
+    font-size: small;
+    font-style: italic;
+}
