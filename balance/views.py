@@ -55,8 +55,6 @@ def actualizar(id):
             movimiento = Movimiento(mov_dict)
 
             resultado = lista.editarMovimiento(movimiento)
-
-            resultado = lista.editarMovimiento(movimiento)
             if resultado == 1:
                 flash('El movimiento se ha actualizado correctamente.')
             elif resultado == -1:
